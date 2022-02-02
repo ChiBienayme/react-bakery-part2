@@ -4,32 +4,32 @@ class Card extends React.Component {
     constructor() {
         super();
         this.state={
-            image: require("../public/images/item.png"),
+            image: "",
         }
-
-        
-        
     }
+
+
     componentDidMount() {
-        fetch(`https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/${productName}.png`)
-          .then((blob) => blob.json())
-          .then((createObjectURL) => {
-            console.log(createObjectURL);
+        fetch(`https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/"${this.props.productName}".png`)
+        .then((res) =>  res.blob())
+        .then((url) => {
+            this.url = URL.createObjectURL(url) 
             this.setState({ 
-                cake: createObjectURL[0].cake,
-                coffee: createObjectURL[0].coffee,
-                croissant: createObjectURL[0].croissant,
-            });
-          });
-      }
+                image: url,
+            })
+        })
+        .catch(err => console.log(err))
+    }
 
     render() {
         return(
             <div>
-                <button class="image" onClick= {this.props.productName || this.props.price}>  
-                    <img src={this.pros.image} id="img-change" alt="item"/>  
+                <button class="image" 
+                        onClick= {this.props.productName || this.props.price}>  
+                    { this.state.image && <img src={this.props.image} id="img-change" alt="item"/>  }
                 </button> 
             </div>
+
         )
     }
 }

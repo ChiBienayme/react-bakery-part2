@@ -41,7 +41,7 @@ class Add extends Component {
                     <input type="range" value={this.state.price} onChange={this.updatePrice} min="1" max="10"></input>
                     <span>{this.state.price}</span>
                 </div>
-                
+
             </div>
         )
     }

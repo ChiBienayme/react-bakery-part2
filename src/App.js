@@ -9,7 +9,7 @@ import Button from './components/Button';
 import Add from './components/Add';
 import List from './components/List';
 import Pay from './components/Pay';
-import Card from "./components/Card"
+
 
 
 class App extends React.Component {
@@ -80,8 +80,9 @@ class App extends React.Component {
 
         <Button onClick={this.selectPay} isSelected={this.state.activeTabs === 'pay' ? true : false}> Pay </Button>
 
-
         {this.renderContent()}
+
+        
       </div>
     );
   }
